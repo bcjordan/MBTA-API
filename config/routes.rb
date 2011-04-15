@@ -1,4 +1,14 @@
 MBTAAPI::Application.routes.draw do
+  match ':controller/:action/:id.:format'
+
+  get "mapper/station"
+
+  get "mapper/find_closest_stations"
+
+  get "mapper/station_schedule"
+
+  get "mapper/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
