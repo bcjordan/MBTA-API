@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  line: MyString
+  trip: MyString
+  platform_key: MyString
+  information_type: MyString
+  arrived: MyString
+  time: MyString
+  time_remaining: MyString
+  revenue: MyString
+  route: MyString
+
+two:
+  line: MyString
+  trip: MyString
+  platform_key: MyString
+  information_type: MyString
+  arrived: MyString
+  time: MyString
+  time_remaining: MyString
+  revenue: MyString
+  route: MyString
