@@ -5,7 +5,6 @@ class CreateTrains < ActiveRecord::Migration
       t.string :trip
       t.string :platform_key
       t.string :information_type
-      t.string :arrived
       t.string :time
       t.string :time_remaining
       t.string :revenue

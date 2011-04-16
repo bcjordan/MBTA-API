@@ -6,7 +6,7 @@ http://0.0.0.0:3000/mapper/find_closest_stations.json?lat=42.4932585&lon=-71.051
 http://0.0.0.0:3000/mapper/station_schedule/place-pktrm.json
 
 TODO:
-* Change station_schedule API to use specified field names
+ Change station_schedule API to use specified field names
 * Create index map
 ** Add user location marker (using Geokit)
 ** Add markers for all stations

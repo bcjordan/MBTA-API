@@ -14,12 +14,17 @@ class MapperController < ApplicationController
   def station_schedule
     stations = Station.find_all_by_stop_id(params[:id])
 
-    stations.map!{ |s| s.platform_key }
+    station_keys = stations.map{ |s| s.platform_key }
+    
+    update_trains
 
     trains = []
-    stations.each{ |s| trains.concat(find_trains(s)) }
+    station_keys.each{ |s| 
+      trains.concat Train.find_all_by_platform_key(s)# .map { |t| t.to_json }
+    }  
 
-    render :json => trains
+
+    render :json => trains.as_json(:except => [:created_at, :updated_at])
   end
 
   def index
@@ -28,6 +33,8 @@ class MapperController < ApplicationController
   private
 
   def update_trains
+    Train.delete_all
+
     [].tap do |trains|
       ["red", "blue", "orange"].each do |line|
         json_hash = JSON.parse(open(
@@ -40,13 +47,15 @@ class MapperController < ApplicationController
             :arrived => t["Arrived"],
             :time => t["Time"],
             :time_remaining => t["TimeRemaining"],
-            :revenue => t["Revenue"]
-            :route => t["Route"] }
+            :revenue => t["Revenue"],
+            :route => t["Route"]
+          }
 
-          trains << Train.new attrs
+          trains << Train.create(attrs)
         }
       end
     end
+  end
 
   def get_json_for platform_key
     line =  case platform_key[0..0]
@@ -62,7 +71,6 @@ class MapperController < ApplicationController
   end
 
   def find_trains platform_key
-    logger.debug platform_key
     result = JSON.parse(open(get_json_for platform_key).read)
     logger.debug result
     [].tap do |a|
