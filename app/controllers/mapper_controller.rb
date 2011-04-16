@@ -59,7 +59,6 @@ class MapperController < ApplicationController
           attrs = { :line => t["Line"], :trip => t["Trip"],
             :platform_key => t["PlatformKey"],
             :information_type => t["InformationType"],
-            :arrived => t["Arrived"],
             :time => t["Time"],
             :time_remaining => t["TimeRemaining"],
             :revenue => t["Revenue"],
