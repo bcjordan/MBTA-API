@@ -15,8 +15,9 @@ class MapperController < ApplicationController
     stations = Station.find_all_by_stop_id(params[:id])
 
     station_keys = stations.map{ |s| s.platform_key }
+   
+    update_trains if Train.first.nil? or Train.first.created_at.since(15) < Time.now
     
-    update_trains
 
     trains = []
     station_keys.each{ |s| 
@@ -39,6 +40,7 @@ class MapperController < ApplicationController
     @stations = Station.all
 
     grab_location
+    update_trains
 
     @close_station = Station.find_closest(:origin => [session[:lat], session[:lng]])
 
