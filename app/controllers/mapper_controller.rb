@@ -21,10 +21,18 @@ class MapperController < ApplicationController
     trains = []
     station_keys.each{ |s| 
       trains.concat Train.find_all_by_platform_key(s)# .map { |t| t.to_json }
-    }  
+    }
 
+    @station = stations.first
 
-    render :json => trains.as_json(:except => [:created_at, :updated_at])
+    trains.sort {|t, t2| t.time.split(':').join.to_i <=> t2.time.split(':').join.to_i}
+
+    @north = trains.select {|t| t.platform_key[-1..-1] == "N"}
+    @south = trains.select {|t| t.platform_key[-1..-1] == "S"}
+    @east = trains.select {|t| t.platform_key[-1..-1] == "E"}
+    @west = trains.select {|t| t.platform_key[-1..-1] == "W"}
+
+    respond_with trains.as_json(:except => [:created_at, :updated_at])
   end
 
   def index

@@ -17,13 +17,24 @@
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     
+    var homeInfoString = '<p>Closest station: <%= @close_station.stop_name %></p><p>Distance: <%= @close_station.distance_from [session[:lat], session[:lng]] %> miles</p>'
     
     var markerhome = new google.maps.Marker({
          position: latlng,
          title: "Home"
     });
+ 
+    var infoWindowHome = new google.maps.InfoWindow({
+        content: homeInfoString
+    });
+
     markerhome.setMap(map);
-    
+
+    google.maps.event.addListener(markerhome, 'click', function() {
+      infoWindowHome.open(map,markerhome);
+    });
+ 
+   
     <% @stations.each_with_index do |station, i| %>
     
     var contentString<%=i%> = '<%=raw station.html.gsub(/[']/, '\\\\\'') %>'
@@ -55,7 +66,7 @@
   <div id="map_canvas"></div>
 
 
-<h1>Mapper#index</h1>
+<h1>MBTA Map with Schedules</h1>
 <p>Your location is: <%= session[:lat] %>, <%= session[:lat] %> </p>
 
 <p>

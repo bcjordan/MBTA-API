@@ -1,2 +1,52 @@
-<h1>Mapper#station_schedule</h1>
-<p>Find me in app/views/mapper/station_schedule.html.erb</p>
+<h4>Schedule for <%= @station.stop_name %> </h1>
+<% unless @north.empty? %>
+  <b>Northbound:</b><br/>
+  <table>
+    <tr><td><b>Status</b></td><td><b>Remaining</b></td></tr>
+  <% @north.each do |t| %>
+    <tr>
+    <td><%= t.information_type %></td>
+    <td><%= t.time_remaining %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<% unless @south.empty? %>
+  <b>Southbound:</b><br/>
+  <table>
+    <tr><td><b>Status</b></td><td><b>Remaining</b></td></tr>
+  <% @south.each do |t| %>
+    <tr>
+    <td><%= t.information_type %></td>
+    <td><%= t.time_remaining %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<% unless @east.empty? %>
+  <b>East:</b><br/>
+  <table>
+    <tr><td><b>Status</b></td><td><b>Remaining</b></td></tr>
+  <% @east.each do |t| %>
+    <tr>
+    <td><%= t.information_type %></td>
+    <td><%= t.time_remaining %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<% unless @west.empty? %>
+  <b>Westbound:</b><br/>
+  <table>
+    <tr><td><b>Status</b></td><td><b>Remaining</b></td></tr>
+  <% @west.each do |t| %>
+    <tr>
+    <td><%= t.information_type %></td>
+    <td><%= t.time_remaining %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>

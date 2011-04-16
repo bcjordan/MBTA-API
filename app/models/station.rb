@@ -8,7 +8,7 @@ class Station < ActiveRecord::Base
 
 
   def html
-    "Hello, world. I am a train station :D"
+    '<iframe title="Station Schedule" class="testing" type="text/html" width="480" src="' + "mapper/station_schedule/#{self.stop_id}.html" + '" frameborder="0"></iframe>'
   end
 
   def color_link
