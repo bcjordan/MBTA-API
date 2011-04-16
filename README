@@ -1,11 +1,11 @@
 Heroku URL: http://mbta-api.heroku.com/
 
 Sample URLs:
-http://0.0.0.0:3000/mapper/station/place-pktrm.json
-http://0.0.0.0:3000/mapper/find_closest_stations.json?lat=42.4932585&lon=-71.0512277
-http://0.0.0.0:3000/mapper/station_schedule/place-pktrm.json
+/mapper/station/place-pktrm.json
+/mapper/find_closest_stations.json?lat=42.4932585&lon=-71.0512277
+/mapper/station_schedule/place-pktrm.json
 
-TODO:
+Completed:
  Change station_schedule API to use specified field names
  Create index map
  Add user location marker (using Geokit)
@@ -14,3 +14,5 @@ TODO:
  Add markers for all stations
  Add infowindows for all stations http://stackoverflow.com/questions/3694242/youtube-video-in-a-google-map-info-window
  Write infowindow URL in mapper controller, takes station
+
+TODO:
