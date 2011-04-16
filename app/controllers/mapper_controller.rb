@@ -81,31 +81,4 @@ class MapperController < ApplicationController
 
     session[:lat], session[:lng] = user_loc.lat, user_loc.lng
   end
-
-
-
-=begin
-  def get_json_for platform_key
-    line =  case platform_key[0..0]
-            when "R"
-              "red"
-            when "B"
-              "blue"
-            when "O"
-              "orange"
-            end
-   
-    "http://developer.mbta.com/Data/#{line}.json"
-  end
-
-  def find_trains platform_key
-    result = JSON.parse(open(get_json_for platform_key).read)
-    logger.debug result
-    [].tap do |a|
-      result.each { |train|
-        a << train if train["PlatformKey"] == platform_key
-      }
-    end
-  end
-=end
 end
