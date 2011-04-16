@@ -6,4 +6,22 @@ class Station < ActiveRecord::Base
                            :lat_column_name => :stop_lat,
                            :lng_column_name => :stop_lon
 
+
+  def html
+    "Hello, world. I am a train station :D"
+  end
+
+  def color_link
+    color = case self.platform_key[0..0]
+              when "R"
+                "FF0000"
+              when "B"
+                "0000FF"
+              when "O"
+                "FF7300"
+              end
+
+    "http://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin|+|#{color}|000000|FF0000"
+  end
+
 end

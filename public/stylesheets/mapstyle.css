@@ -1,0 +1,12 @@
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px }
+#map_canvas { width:50%; height:50%;float: left }
+#last_locations { width:50%; height:50%; float: right }
+body { 
+	font: 75% georgia, sans-serif;
+	line-height: 1.88889;
+	color: #555753; 
+	background: #eee;
+	margin: 0; 
+	padding: 0;
+	}

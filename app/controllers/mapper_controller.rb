@@ -28,6 +28,13 @@ class MapperController < ApplicationController
   end
 
   def index
+    @stations = Station.all
+
+    grab_location
+
+    @close_station = Station.find_closest(:origin => [session[:lat], session[:lng]])
+
+    render :action => "index", :layout => false
   end
 
   private
@@ -57,6 +64,18 @@ class MapperController < ApplicationController
     end
   end
 
+  def grab_location
+    unless (request.remote_ip == "127.0.0.1")
+      ip = request.remote_ip
+    else ip = "130.64.22.2" end
+    user_loc = Geokit::Geocoders::MultiGeocoder.geocode(ip)
+
+    session[:lat], session[:lng] = user_loc.lat, user_loc.lng
+  end
+
+
+
+=begin
   def get_json_for platform_key
     line =  case platform_key[0..0]
             when "R"
@@ -79,4 +98,5 @@ class MapperController < ApplicationController
       }
     end
   end
+=end
 end

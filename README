@@ -9,6 +9,8 @@ TODO:
  Change station_schedule API to use specified field names
 * Create index map
 ** Add user location marker (using Geokit)
+*** User infowindow incl:
+      s.distance_from(ip) closest station, miles away
 ** Add markers for all stations
 ** Add infowindows for all stations http://stackoverflow.com/questions/3694242/youtube-video-in-a-google-map-info-window
 ** Write infowindow URL in mapper controller, takes station
