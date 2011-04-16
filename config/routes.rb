@@ -9,6 +9,8 @@ MBTAAPI::Application.routes.draw do
 
   get "mapper/index"
 
+  root :to => "mapper#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
