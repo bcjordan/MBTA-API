@@ -30,6 +30,7 @@ GEM
     activesupport (3.0.5)
     arel (2.0.9)
     builder (2.1.2)
+    dalli (1.0.3)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     geokit (1.5.0)
@@ -75,6 +76,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dalli
   geokit-rails3
   json
   pg

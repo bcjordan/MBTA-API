@@ -13,6 +13,8 @@ gem 'geokit-rails3'
 
 gem 'pg'
 
+gem 'dalli'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
