@@ -35,7 +35,9 @@
     });
  
    
-    <% @stations.each_with_index do |station, i| %>
+    <% 
+      cache("stations_map") do
+      @stations.each_with_index do |station, i| %>
     
     var contentString<%=i%> = '<%=raw station.html.gsub(/[']/, '\\\\\'') %>'
     
@@ -54,7 +56,7 @@
       infoWindow<%=i%>.open(map,marker<%=i%>);
     });
     
-    <% end %>
+    <% end end %>
     
   }
 
