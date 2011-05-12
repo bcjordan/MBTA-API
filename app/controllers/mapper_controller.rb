@@ -8,7 +8,7 @@ class MapperController < ApplicationController
   end
 
   def find_closest_stations
-    render :json => Station.find_within(10, :origin => [params[:lat], params[:lon]])
+    render :json => Station.find_within(5, :origin => [params[:lat], params[:lon]], :order => 'distance')
   end
 
   def station_schedule
